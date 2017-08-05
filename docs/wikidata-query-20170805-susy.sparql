@@ -1,0 +1,6 @@
+SELECT ?lang ?langLabel ?abbr
+WHERE {
+  ?lang wdt:P218 ?abbr;
+  FILTER regex (?abbr, "^(en|de|fa|ro|ga|hr|pl|el|es|lv|cs|bg|et|pt|fi|sl|fr)$").
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
