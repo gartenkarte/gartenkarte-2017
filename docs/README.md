@@ -12,6 +12,13 @@ cp 20160418_stadtacker_gaerten.csv 20170807_stadtacker.csv
 # Adapt header values (lower-case, english)
 # :x
 vim 20170807_stadtacker.csv
+# convert line endings
+dos2unix 20170807_stadtacker.csv
+# manually clean from <96>, line breaks, ...
+# :x
+vim 20170807_stadtacker.csv
+# convert metric into imperial numbers
+perl -0777 -pe 's/(?<=[0-9]),(?=[0-9])/./g' 20170807_stadtacker.csv
 # Generate GeoJSON
 # csv2geojson --lat "lat" --lon "lon" --delimiter ";" 20170807_stadtacker.csv > 20170807_stadtacker.json
 ```
@@ -27,6 +34,8 @@ perl -0777 -pe 's/(?<=\d);#/\n/g' 20170807_stadtacker_types.txt | sort -u
 perl -0777 -pe 's/(?<=\d);#/\n/g' 20170807_stadtacker_types.txt | sort -u | perl -0777 -pe 's/;#\d{1,2}|"//g'
 ```
 
+## Datenbereinigung
+
 ```
 # Extract id and type mappings
 cat 20170807_stadtacker.json | jq -r '[.features | map(.properties) | to_entries[] | {"id": .value.id, "types": .value.types}]' > 20170807_stadtacker_raw_tags.json
@@ -40,4 +49,9 @@ cat 20170807_stadtacker.json | jq -r '[ .features | map(.properties) | to_entrie
 cat 20170807_stadtacker.json | jq -r '.features | map(.properties.id) | { ids: . }' > 20170807_stadtacker_ids.json
 # Get a JSON array with the respective tags
 cat 20170807_stadtacker.json | jq -r '.features | map (.properties.types | split(";#") ) | { tags: . }' > 20170807_stadtacker_tags.json
+```
+
+```
+# check for lines without coordinates
+grep ";;;" .csv >
 ```

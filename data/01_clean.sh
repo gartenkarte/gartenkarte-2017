@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
-project="stadtacker"
-i=$1-2016-$project.csv
-o=$1-2017-$project.csv
-
 cp $i $o
 dos2unix $o
 vim "+set nomore" "+bufdo set fileencoding=utf8 | w" "+q" $o
-xargs -a regexes -I {} perl -i -0777 -pe '{}' $o
+xargs -a regex-repair -I {} perl -i -0777 -pe '{}' $o
+xargs -a regex-unicode -I {} perl -CSD -pi -e '{}' $o
+# Remove lines without coordinates
+head -n 1 < $o > $out-no-coords.csv
+grep ";;;" $o >> $out-no-coords.csv
+sed -ni '/;;;/!p' $o

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+export i=$in.$ext
+export o=$out.$ext

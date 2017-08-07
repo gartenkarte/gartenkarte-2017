@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require ('fs')
-const filelist = [ '20170807_stadtacker', '20170807_stadtacker_ids', '20170807_stadtacker_tags' ]
+const filelist = [ process.argv[2], process.argv[3] ]
 
 var file  = {}
 
@@ -30,8 +30,8 @@ var len = stadtacker[0].features.length
 console.log ("len", len)
 
 for (var i = 0; i < len; i++) {
-  stadtacker[0].features[i]['properties']['tags'] = stadtacker[2].tags[i]
-  console.log("tags", stadtacker[2].tags[i] )
+  stadtacker[0].features[i]['properties']['tags'] = stadtacker[1].tags[i]
+  console.log("tags", stadtacker[1].tags[i] )
 }
 
 console.log("features", stadtacker[0])
