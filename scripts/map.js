@@ -108,12 +108,12 @@ function initMap() {
     defaultlayer = base_maps[user_bg];
 
   if(!center)
-    center = new L.LatLng(51.1657, 10.4515);
+    center = new L.LatLng( 52.4974, 13.3965 );
 
   map = L.map('map-tiles', {
     zoomControl: false,
     center: center,
-    zoom: zoom ? zoom : 5,
+    zoom: zoom ? zoom : 11,
     layers: defaultlayer,
   });
 
