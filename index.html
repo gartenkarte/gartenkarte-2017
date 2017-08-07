@@ -36,15 +36,15 @@
   <script>
     if(! Modernizr.promises) {
       document.write('<script src="https://www.promisejs.org/polyfills/promise-7.0.4.min.js"></scr'+'ipt>');
-      document.write('<script src="bower_components/fetch/fetch.js"></sc'+'ript>');
+      document.write('<script src="https://unpkg.com/whatwg-fetch@2.0.3/fetch.js"></sc'+'ript>');
     }
   </script>
 
   <!-- Styles -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin,latin-ext" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic&subset=latin,latin-ext" />
-  <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
-  <link rel="stylesheet" href="bower_components/PruneCluster/dist/LeafletStyleSheet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/prunecluster@2.1.0/dist/LeafletStyleSheet.css" />
   <link rel="stylesheet" href="styles/css/style.css" />
 </head>
 
@@ -196,9 +196,9 @@
   <!-- Scripts -->
   <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
   <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-  <script defer="defer" src="bower_components/leaflet/dist/leaflet.js"></script>
-  <script defer="defer" src="scripts/leaflet-hash.js"></script>
-  <script defer="defer" src="bower_components/PruneCluster/dist/PruneCluster.min.js"></script>
+  <script defer="defer" src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"></script>
+  <script defer="defer" src="https://cdn.rawgit.com/mlevans/leaflet-hash/d73fc84d/leaflet-hash.js"></script>
+  <script defer="defer" src="https://unpkg.com/prunecluster@2.1.0/dist/PruneCluster.js"></script>
   <script defer="defer" src="scripts/red_fetch.js"></script>
   <script defer="defer" src="scripts/map.js"></script>
 </body>
