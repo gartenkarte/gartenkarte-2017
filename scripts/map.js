@@ -5,7 +5,11 @@
      * http://www.wtfpl.net/ for more details. */
 
 const endpoint = "https://data.transformap.co/place/";
-var redundant_data_urls = [ endpoint + "name", "https://data.transformap.co/raw/5d6b9d3d32097fd6832200874402cfc3", "https://github.com/TransforMap/transformap-viewer/raw/gh-pages/susydata-fallback.json", "susydata-fallback.json" ];
+var redundant_data_urls = [
+  "/data/gartenkarte.json",
+  endpoint + "name", "https://data.transformap.co/raw/5d6b9d3d32097fd6832200874402cfc3",
+  "https://github.com/TransforMap/transformap-viewer/raw/gh-pages/susydata-fallback.json",
+  "susydata-fallback.json" ];
 
 /* fix for leaflet scroll on devices that fire scroll too fast, e.g. Macs
    see https://github.com/Leaflet/Leaflet/issues/4410#issuecomment-234133427
@@ -168,8 +172,8 @@ function addPOIsToMap(geoJSONfeatureCollection) {
     return false;
   }
 
-  var op_servers = [ 'https://overpass-api.de/api/', 'http://api.openstreetmap.fr/oapi/', 'http://overpass.osm.rambler.ru/cgi/' ];
-  var osm_query_string = "interpreter?data=[out:json][timeout:180];";
+  // var op_servers = [ 'https://overpass-api.de/api/', 'http://api.openstreetmap.fr/oapi/', 'http://overpass.osm.rambler.ru/cgi/' ];
+  // var osm_query_string = "interpreter?data=[out:json][timeout:180];";
 
   var POIcollection = geoJSONfeatureCollection.features;
   for(var i=0; i < POIcollection.length; i++) {
@@ -190,24 +194,24 @@ function addPOIsToMap(geoJSONfeatureCollection) {
       tags: feature.properties,
       properties: feature.properties // is used by _ template
     }
-    if(feature.properties['osm']) {
-      var match = feature.properties['osm'].match(/(node|way|relation)\/?([0-9]+)$/);
-      if(match) {
-        console.log("found osm on " + feature.properties.name + ": " + feature.properties['osm']);
-        osm_query_string += match[1] + "(" + match[2] + ");out;";
-      }
-      osm_enabled_pois.push(feature);
-    }
+    // if(feature.properties['osm']) {
+    //   var match = feature.properties['osm'].match(/(node|way|relation)\/?([0-9]+)$/);
+    //   if(match) {
+    //     console.log("found osm on " + feature.properties.name + ": " + feature.properties['osm']);
+    //     osm_query_string += match[1] + "(" + match[2] + ");out;";
+    //   }
+    //   osm_enabled_pois.push(feature);
+    // }
 
     var pmarker = new PruneCluster.Marker(feature.geometry.coordinates[1], feature.geometry.coordinates[0], pdata);
     pruneClusterLayer.RegisterMarker(pmarker);
   }
 
-  if(osm_query_string.length > 42) {
-    osm_query_string += "out;"
-    console.log(osm_query_string);
-    redundantFetch([ op_servers[0] + osm_query_string, op_servers[1] + osm_query_string, op_servers[2] + osm_query_string ], parseOverpassData, function(error) { console.error("no overpass server responded"); }, { cacheBusting : false } );
-  }
+  // if(osm_query_string.length > 42) {
+  //   osm_query_string += "out;"
+  //   console.log(osm_query_string);
+  //   redundantFetch([ op_servers[0] + osm_query_string, op_servers[1] + osm_query_string, op_servers[2] + osm_query_string ], parseOverpassData, function(error) { console.error("no overpass server responded"); }, { cacheBusting : false } );
+  // }
 
   pruneClusterLayer.ProcessView();
   return true;
@@ -222,34 +226,34 @@ redundantFetch( redundant_data_urls ,addPOIsToMap, function(error) { console.err
     as all data is by reference, pdata.properties should get updated?
 */
 
-function parseOverpassData(overpassJSON) {
-  console.log("parseOverpassData called");
-  if(!overpassJSON.elements) {
-    console.error("parseOverpassData: data invalid");
-    return
-  }
-  for(var i = 0; i < overpassJSON.elements.length; i++) {
-    var p = overpassJSON.elements[i];
-
-    var type = p.type;
-    var id = p.id;
-
-    for(var osm_count = 0; osm_count < osm_enabled_pois.length; osm_count++) {
-      var tm_poi = osm_enabled_pois[osm_count];
-      var osmlink = tm_poi.properties['osm'];
-      var match = osmlink.match(/(node|way|relation)\/?([0-9]+)/);
-      if(match && match[1] == p.type && match[2] == p.id) {
-        console.log("found match between " + match[1] + match[2] + " and tm:" + tm_poi.properties['name'] );
-        for(key in p.tags) {
-          if(!tm_poi.properties[key]) {
-            tm_poi.properties[key] = p.tags[key];
-            tm_poi.properties[key + "_source"] = "osm";
-          }
-        }
-      }
-    }
-  }
-}
+// function parseOverpassData(overpassJSON) {
+//   console.log("parseOverpassData called");
+//   if(!overpassJSON.elements) {
+//     console.error("parseOverpassData: data invalid");
+//     return
+//   }
+//   for(var i = 0; i < overpassJSON.elements.length; i++) {
+//     var p = overpassJSON.elements[i];
+//
+//     var type = p.type;
+//     var id = p.id;
+//
+//     for(var osm_count = 0; osm_count < osm_enabled_pois.length; osm_count++) {
+//       var tm_poi = osm_enabled_pois[osm_count];
+//       var osmlink = tm_poi.properties['osm'];
+//       var match = osmlink.match(/(node|way|relation)\/?([0-9]+)/);
+//       if(match && match[1] == p.type && match[2] == p.id) {
+//         console.log("found match between " + match[1] + match[2] + " and tm:" + tm_poi.properties['name'] );
+//         for(key in p.tags) {
+//           if(!tm_poi.properties[key]) {
+//             tm_poi.properties[key] = p.tags[key];
+//             tm_poi.properties[key + "_source"] = "osm";
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 /* get taxonomy stuff */
 var taxonomy_url = "http://viewer.transformap.co/taxonomy.json";
@@ -278,7 +282,7 @@ function getLangTaxURL(lang) {
     console.error("getLangTaxURL: no lang given");
     return false;
   }
-  
+
   var tax_query =
     'prefix bd: <http://www.bigdata.com/rdf#> ' +
     'prefix wikibase: <http://wikiba.se/ontology#> ' +
@@ -432,7 +436,7 @@ function convertFlattaxToTree() {
     if(a.type_of_initiative_tag && a.type_of_initiative_tag.match(/^other_/)) return 1;
     if(b.type_of_initiative_tag && b.type_of_initiative_tag.match(/^other_/)) return -1;
 
-    if(a.itemLabel < b.itemLabel) 
+    if(a.itemLabel < b.itemLabel)
       return -1
     else
       return 1
@@ -586,7 +590,7 @@ function clickOnInitiative(id) {
     }
     trigger_Filter();
   }
-   
+
 
 }
 
@@ -974,7 +978,7 @@ function filterMatches(attributes, filter_UUID) {
     console.log("error in filter, no attributes");
     return false;
   }
-  if(!attributes.type_of_initiative) {
+  if(!attributes.name) {
     console.log("error in filter, no type_of_initiative attribute");
     return false;
   }
@@ -1181,7 +1185,7 @@ function initializeLanguageSwitcher(returned_data){
 redundantFetch( [ "https://base.transformap.co/wiki/Special:EntityData/Q5.json", "https://raw.githubusercontent.com/TransforMap/transformap-viewer/Q5-fallback.json", "Q5-fallback.json" ],
   initializeLanguageSwitcher,
   function(error) { console.error("none of the lang init data urls available") } );
-  
+
 
 function switchToLang(lang) {
   $("#languageSelector li.default").removeClass("default");
