@@ -1,0 +1,5 @@
+s/Titel/name/g
+s/"Adresse des Gartens"/address/g
+s/Entwicklungsstand:/status/g
+s/Stadtackertyp/types/g
+s/ID/id/g
