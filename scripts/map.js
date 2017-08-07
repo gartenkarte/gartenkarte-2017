@@ -187,7 +187,9 @@ function addPOIsToMap(geoJSONfeatureCollection) {
     var pdata = {
       icon:  new L.divIcon({
         className: 'my-div-icon',
-        iconSize:30,
+        iconSize: [ 25, 40],
+        iconAnchor: [12, 40], // point of the icon which will correspond to marker's location
+        popupAnchor: [12, -60], // point from which the popup should open relative to the iconAnchor                
         html:"<div><div>" + feature.properties.name + "</div></div>"
       }),
       popup: livePopup,
