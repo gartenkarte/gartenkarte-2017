@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-export project=$1
-export run=$2
-export session=$run-$project
+export session=$b-$a
 export in=$session-in
 export out=$session-out

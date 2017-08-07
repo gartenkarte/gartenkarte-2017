@@ -24,17 +24,17 @@ const loadFiles = function (files) {
   return response
 }
 
-var stadtacker = loadFiles (filelist)
-//console.log ("stadtacker", stadtacker)
-var len = stadtacker[0].features.length
+var files = loadFiles (filelist)
+//console.log ("files", files)
+var len = files[0].features.length
 console.log ("len", len)
 
 for (var i = 0; i < len; i++) {
-  stadtacker[0].features[i]['properties']['tags'] = stadtacker[1].tags[i]
-  console.log("tags", stadtacker[1].tags[i] )
+  files[0].features[i]['properties']['tags'] = files[1].tags[i]
+  console.log("tags", files[1].tags[i] )
 }
 
-console.log("features", stadtacker[0])
+console.log("features", files[0])
 
-var json = JSON.stringify(stadtacker[0])
-fs.writeFileSync( filelist[0] + '_tagged.json', json, 'utf8' )
+var json = JSON.stringify(files[0])
+fs.writeFileSync( filelist[0] + '-tags-merged.json', json, 'utf8' )

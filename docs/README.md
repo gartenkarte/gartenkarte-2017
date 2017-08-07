@@ -53,5 +53,5 @@ cat 20170807_stadtacker.json | jq -r '.features | map (.properties.types | split
 
 ```
 # check for lines without coordinates
-grep ";;;" .csv >
+grep ";;;" .csv
 ```

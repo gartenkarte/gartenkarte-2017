@@ -24,3 +24,6 @@ bower_components/PruneCluster/*
 bower_components/PruneCluster/dist/*
 !bower_components/PruneCluster/dist/PruneCluster.min.js
 !bower_components/PruneCluster/dist/LeafletStyleSheet.css
+
+*.csv
+*.json
