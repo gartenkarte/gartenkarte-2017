@@ -27,3 +27,4 @@ bower_components/PruneCluster/dist/*
 
 *.csv
 *.json
+.tmp/
