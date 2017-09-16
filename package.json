@@ -1,6 +1,6 @@
 {
-  "name": "transformap-viewer",
-  "version": "0.0.0",
+  "name": "gartenkarte-2017",
+  "version": "0.1.0",
   "description": "This is a Web-Map plugin that aims at displaying data from the [TransforMap API](https://github.com/TransforMap/data.transformap.co). It offers dynamic filters, which are built from a Wikibase graph hosted on [base.transformap.co](https://base.transformap.co).",
   "dependencies": {},
   "devDependencies": {
@@ -14,10 +14,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/TransforMap/transformap-viewer.git"
+    "url": "https://github.com/gartenkarte/gartenkarte-2017.git"
   },
   "author": "",
   "bugs": {
-    "url": "https://github.com/TransforMap/transformap-viewer/issues"
+    "url": "https://github.com/gartenkarte/gartenkarte-2017/issues"
   }
 }
