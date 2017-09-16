@@ -376,7 +376,7 @@ function convertFlattaxToTree() {
   treejson.elements.forEach(function(category_item){ //iterate over categories to attach subcats
 
     var uuid_of_category = category_item.UUID;
-    //console.log(uuid_of_category);
+    console.log("UUID of category: " + uuid_of_category); // outputs IRIs
 
     for( i in tax_hashtable.cat_qindex) {
       var entry = tax_hashtable.cat_qindex[i];
@@ -696,7 +696,7 @@ function fill_tax_hashtable() {
   tax_hashtable.all_qindex = {};
 
   flat_taxonomy_array.forEach(function(entry){
-
+    console.log("Flat taxonomy of entry: " + entry) // [object  Object]
     var qnr = getQNR(entry.item.value);
     var root_qnr = "";
 
