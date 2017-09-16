@@ -292,7 +292,7 @@ function getLangTaxURL(lang) {
     'prefix wd: <https://base.transformap.co/entity/>' +
     'SELECT ?item ?itemLabel ?instance_of ?subclass_of ?type_of_initiative_tag ?wikipedia ?description ' +
     'WHERE {' +
-      '?item wdt:P8* wd:Q8 .' +
+      '?item wdt:P8 wd:Q191 .' +
       '?item wdt:P8 ?subclass_of .' +
       'OPTIONAL { ?item wdt:P4 ?instance_of . }' +
       'OPTIONAL { ?item wdt:P15 ?type_of_initiative_tag }' +
@@ -301,7 +301,7 @@ function getLangTaxURL(lang) {
       'SERVICE wikibase:label {bd:serviceParam wikibase:language "'+lang+'" }' +
     '}';
 
-   return 'https://query.base.transformap.co/bigdata/namespace/transformap/sparql?query=' +encodeURIComponent(tax_query) + "&format=json"; // server not CORS ready yet
+   return 'https://query.base.transformap.co/bigdata/namespace/staging/sparql?query=' +encodeURIComponent(tax_query) + "&format=json"; // server not CORS ready yet
 }
 
 function setFilterLang(lang) {
@@ -431,8 +431,8 @@ function convertFlattaxToTree() {
 
   function itemLabelCompare(a,b){
     // 'Others' cat should get sorted last
-    if(getQNR(a.UUID) == "Q20") return 1;
-    if(getQNR(b.UUID) == "Q20") return -1;
+    if(getQNR(a.UUID) == "Q217") return 1;
+    if(getQNR(b.UUID) == "Q217") return -1;
 
     //in toi list, 'other*' should be last
     if(a.type_of_initiative_tag && a.type_of_initiative_tag.match(/^other_/)) return 1;
@@ -679,14 +679,14 @@ var tax_hashtable = {
   cat_qindex: {},
   all_qindex: {},
   toi_count: {},
-  root_qnr: "Q8"
+  root_qnr: "Q191"
 }
 
 var item_domain = "https://base.transformap.co" //http for now, because SPARQL doesn't know about https
 var tax_elements = {
   type_of_initiative: item_domain + "/entity/Q6",
-  category: item_domain + "/entity/Q5",
-  taxonomy: item_domain + "/entity/Q3"
+  category: item_domain + "/entity/Q189",
+  taxonomy: item_domain + "/entity/Q188"
 }
 
 function fill_tax_hashtable() {
@@ -737,12 +737,12 @@ function fill_tax_hashtable() {
         var root = {
         "item": {
           "type": "uri",
-          "value": "https://base.transformap.co/entity/Q8"
+          "value": "https://base.transformap.co/entity/Q191"
         },
         "itemLabel": {
-          "xml:lang": "en",
+          "xml:lang": "de",
           "type": "literal",
-          "value": "SSEDAS Taxonomy"
+          "value": "Gartentyp"
         },
         "instance_of": {
           "type": "uri",
@@ -750,7 +750,7 @@ function fill_tax_hashtable() {
         }
       }
       flat_taxonomy_array.push(root);
-      tax_hashtable.all_qindex["Q8"] = root
+      tax_hashtable.all_qindex["Q191"] = root
     }
 
   })
