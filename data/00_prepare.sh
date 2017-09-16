@@ -29,3 +29,5 @@ source 99_template_ext
 ./02_clean.sh
 ./03_convert.sh
 ./replace_types.js $out $out-tags
+
+./04_bundle.sh
