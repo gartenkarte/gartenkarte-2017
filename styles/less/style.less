@@ -1,8 +1,11 @@
 /* next 4 are currently used */
 @yellow-bright: #fcec74; /* 1 #F6DF05 2 */
 @yellow-dark: #F2BD0B; /* #F0BB0C */
-@blue-bright: #95D5D2; /* 5 dec: 149,213,210 */ 
+@blue-bright: #95D5D2; /* 5 dec: 149,213,210 */
 @blue-dark: #1F3050; /* 6 */
+
+@green-light: #54af4e;
+@green-dark: #4ca63c;
 
 /* the original ones from the CD document */
 @cd-darkblue: #1F3050;
@@ -28,7 +31,7 @@ a:link {
 body {
   margin:0;
   font-family: 'PT Sans', sans-serif;
-  background: @blue-dark;
+  background: @green-dark;
 }
 
 p {
@@ -60,7 +63,8 @@ Basic map and pop up styles
   top:0;
   bottom:0;
   right:0;
-  left:@menuwidth;
+  left:0;
+  z-index:0;
 
   .leaflet-popup {
     font-family: 'Open Sans', sans-serif;
@@ -161,7 +165,7 @@ Basic map and pop up styles
   .my-div-icon {
     width:25px !important;
     height:40px;
-    background-image:url("../../bower_components/leaflet/dist/images/marker-green.png");
+    background-image:url("/assets/marker-green.png");
     margin-top:-40px;
     div {
       display:none;
@@ -206,7 +210,7 @@ Basic map and pop up styles
     bottom:14px;
     left:-70px;
     display:block;
-    width:300px; 
+    width:300px;
     height:33px;
     transform: rotate(45deg);
     overflow:hidden;
@@ -246,11 +250,12 @@ Map menu styling
 
 /* Menu styles */
 #map-menu-container {
-    height: 100vh;
     overflow:auto;
+    position:absolute;
     width: @menuwidth;
+    z-index:1;
 
-    background: @blue-bright;
+    background: @green-light;
     font-size: 0.8em;
     font-weight:bold;
     letter-spacing:0.075em;
@@ -269,7 +274,7 @@ Map menu styling
         border: none;
         .list-group-item {
             padding:0;
-            background: @blue-bright;
+            background: @green-dark;
             color: #fff;
             border: none;
             border-radius: none;
@@ -293,7 +298,7 @@ Map menu styling
             ul.subcategories {
               background:@blue-dark;
             }
- 
+
         }
         li.list-group-item.category:first-child {
             border-top: 1px solid #aaa;
@@ -520,4 +525,3 @@ MEDIA
       top:40px;
     }
 }
-

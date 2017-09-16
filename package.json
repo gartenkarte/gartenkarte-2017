@@ -5,12 +5,14 @@
   "license": "WTFPL",
   "dependencies": {},
   "devDependencies": {
+    "less": "^2.7.2",
+    "less-plugin-clean-css": "^1.5.1",
     "uglify-es": "^3.1.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run build-js && npm run build-css",
-    "build-css": "cat styles/css/style.css > dist/site.css",
+    "build-css": "lessc --clean-css styles/less/style.less styles/css/style.css && cat styles/css/style.css > dist/site.css",
     "build-js": "uglifyjs scripts/red_fetch.js scripts/map.js > dist/site.js"
   },
   "repository": {
