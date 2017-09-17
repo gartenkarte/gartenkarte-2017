@@ -28,11 +28,11 @@ We first need to delete the old DB (there would be duplicate values if we just d
 Go to https://query.base.transformap.co/bigdata/#namespaces
 
 1. clone the transformap namespace to a copy "tm2" or something like that
-  * click "clone"
+    * click "clone"
 2. enter the name in the box on the bottom
-  * click "create namespace"
+    * click "create namespace"
 3. delete the "transformap" namespace
-  * clone the copy to "transformap"
+    * clone the copy to "transformap"
 4. for the "transformap" namespace, click "Use"
 
 Go to https://query.base.transformap.co/bigdata/#update

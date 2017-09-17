@@ -4,11 +4,11 @@ root = true
 end_of_line = lf
 insert_final_newline = true
 
-[*.js]
+[*.{js,md,markdown}]
 charset = utf-8
 indent_style = space
 indent_size = 4
 
-[*.{json,md,markdown,yml,yaml}]
+[*.{json,yml,yaml}]
 indent_style = space
 indent_size = 2
