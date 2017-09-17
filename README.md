@@ -14,11 +14,11 @@ To get in touch with the maintainers of this project, you have several options. 
 * in the [Transformaps Discourse](https://discourse.transformap.co/) community bulletin board.
 * on [Twitter @transformap](https://twitter.com/transformap).
 
-
 ## Documentation
 
-A rolling documentation is written in the textpad [`gartenkarte-2017-web`](https://hack.allmende.io/gartenkarte-2017-web).
 Further documents reside [in the `docs/` subdirectory](./docs/README.md).
+
+A rolling documentation is written from time to time in the textpad [`gartenkarte-2017-web`](https://hack.allmende.io/gartenkarte-2017-web).
 
 ## License
 
