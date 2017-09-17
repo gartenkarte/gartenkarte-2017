@@ -20,7 +20,7 @@ Run `npm install` once to install needed development dependencies.
 
 This service relies heavily on different linked data backends. Please see the flowchart:
 
-![Flowchart showing the services involved](TM-Viewer-dataflow.png)
+![Flowchart showing the services involved](./assets/TM-Viewer-dataflow.png)
 
 #### Distribution
 
