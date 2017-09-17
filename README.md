@@ -1,93 +1,27 @@
-# TransforMap-Viewer
+# Berliner Gartenkarte 2017
 
-This is a Web-Map plugin that aims at displaying data from the [TransforMap API](https://github.com/TransforMap/data.transformap.co). It offers dynamic filters, which are built from a Wikibase graph hosted on [base.transformap.co](https://base.transformap.co).
+What you are finding here is the source code repository of Berlin's urban agriculture map. It displays the field of intercultural, community and plentiful other forms of urban gardening initatives. It is live on [`gartenkarte.de`](http://gartenkarte.de).
 
-## Features
+![](./docs/assets/gartenkarte.de.jpg)
 
-* Displays geoJSON Points
-* Clustering via [PruneCluster](https://github.com/SINTEF-9012/PruneCluster)
-* Popup with image display, special support for Mediawiki storage
-* Filtering system, builds filter menu out of RDF graph provided by Wikibase
+The software is derived from the [TransforMap Viewer](https://github.com/TransforMap/transformap-viewer/) ([demo](http://viewer.transformap.co/)) and is accompanied by a data transformation strategy, custom icons and integration with other services from the [Transformaps ecosystem](https://discourse.transformap.co/t/introducing-the-transformap-testbed-architecture/1273). This web map displays data from the [TransforMap data service](https://github.com/TransforMap/data.transformap.co) and uses dynamic filters which are curated in a [wiki database](https://base.transformap.co).
 
-## Embedding
+## Communication
 
-To embed the TransforMap-Viewer into your own website, the simplest way is via an iframe:
+To get in touch with the maintainers of this project, you have several options. If you want to report a technical deficiency, please adhere to [the issue tracker](https://github.com/gartenkarte/gartenkarte-2017/issues). For all other subjects, feel free to reach out
 
-    <iframe width="1200" height="500" src="http://viewer.transformap.co/#5/51.166/10.451"></iframe>
+* in the [`#transformaps-development:matrix.allmende.io`](https://riot.allmende.io/#/room/#transformaps-development:matrix.allmende.io) Riot chat messaging channel.
+* in the [Transformaps Discourse](https://discourse.transformap.co/) community bulletin board.
+* on [Twitter @transformap](https://twitter.com/transformap).
 
-You can change the background layer via the param "background" (e.g. src="http://viewer.transformap.co/?background=mapnik#5/51.166/10.451"). Currently 4 layers are supported:
 
-* background=stamen_terrain_bg : Default, only terrain without any labels, roads or buildings.
-* background=stamen_terrain : terrain with (a few) labels, roads and buildings later
-* background=mapnik : Default OpenStreetMap 'Mapnik'/'OSM-Carto' style
-* background=hot : Humanitarian OSM style. Temperate colors, very detailed.
+## Documentation
 
-If you want to change anything else, e.g. color scheme or the displayed data, fork it and embed it from your fork's gh-pages.
+A rolling documentation is written in the textpad [`gartenkarte-2017-web`](https://hack.allmende.io/gartenkarte-2017-web).
+Further documents reside [in the `docs/` subdirectory](./docs/README.md).
 
-## Translations
+## License
 
-Translation for the filter-menu are directly fetched from Wikibase. All other strings are  are handled via [weblate.transformap.co](https://weblate.transformap.co/projects/transformap-viewer/transformap-viewer-textsnipplets/). You can help translating, just sign up! It stores its translations here: https://github.com/TransforMap/transformap-viewer-translations.
+This repository is licensed under the WTFPL. See the LICENCE file in this repository for details. Please take this exemplary excerpt to grasp its coverage:
 
-Note: The English translations are handled in the source repository directly.
-
-To add new strings, you have to add them currently manually to scripts/map.js and in the translation repository, to each of the language files in json/*.json.
-
-# Development
-
-## Data flows
-
-This service relies heavily on different linked data backends, see flowchart:
-
-![Flowchart showing the services involved](TM-Viewer-dataflow.png)
-
-## CSS
-
-Is created via [less](http://lesscss.org/).
-
-Do not edit the CSS file in styles/css/style.css, edit styles/less/style.less and compile to css.
-
-Install node *less* compiler to convert the stylesheet to less css:
-
-* Debian: `aptitude install node-less`
-
-Compile it via :
-
-    lessc -x styles/less/style.less styles/css/style.css
-
-## Dependencies
-
-Install *bower* from npm:
-
-    [sudo] npm install -g bower
-
-Debian: install npm:
-
-    [sudo] aptitude install npm nodejs-legacy
-
-Fetch external dependencies:
-
-    bower install
-
-## Deployment
-
-The site http://viewer.transformap.co/ is actually hosted at github.io. Just push the branch gh-pages to update the site.
-
-Notes: for libraries used with bower, add a static copy of the files to the gh-pages branch to its location in bower_components/ (and add an exception to the .gitignore-file).
-
-### build concatenated and minified js/css
-
-Run `npm install` once to install needed development dependencies.
-
-Then, run `npm run build` each time js and/or css has been changed to update the content in the `/dist` folder.
-
-## Coding Style guide
-
-We use spaces (2) instead of tabs, please also use this convention.
-
-## Forks
-
-Currently, there are 3 "branches" of development:
-
-* http://viewer.transformap.co/ - "master" branch, [this](https://github.com/TransforMap/transformap-viewer) repo.
-* https://susy-mapviewer.github.io/transformap-viewer/ for embedding into the [solidarityeconomy.eu](http://solidarityeconomy.eu) site. Repo see [here](https://github.com/susy-mapviewer/transformap-viewer).
-* https://susy-partners.github.io/transformap-viewer/ for embedding into the websites of SUSY-partners. Repo see [here](https://github.com/susy-partners/transformap-viewer).
+> **DO WHAT THE FUCK YOU WANT**
