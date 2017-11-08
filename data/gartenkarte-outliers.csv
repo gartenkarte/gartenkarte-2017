@@ -1,4 +1,4 @@
-id;Inhaltstyp;name;ProjektCode;types;address;Adressenzusatz;Internetauftritt;status;lat;lon
+id;Inhaltstyp;name;ProjektCode;types;address;comment;url;status;lat;lon
 25;PraxisProjekte;Interkultureller Schulgarten Oberschöneweide;B019b;"Interkultureller Garten;#8;#Schulgarten (allg. Schulbildung);#16";"Kottmeierstraße 2,  12459 Berlin";;;Laufend;52.4626830736898;13.5243884834671
 62;PraxisProjekte;Interkultureller Seniorengarten im MehrGenerationenHaus;B052;"Interkultureller Garten;#8;#Seniorengarten;#20";"Wassertorstrasse 48,  10969 Berlin";;;Abgebrochen;52.5002812986056;13.405461509787
 64;PraxisProjekte;Interkultureller Garten der Künste im Pallaspark Schöneberg;B054;"Gemeinschaftsgarten (individuelle Nutzung);#4";"Pallasstr. 7,  10781 Berlin";;;Laufend;52.4947284411823;13.3584058846558
