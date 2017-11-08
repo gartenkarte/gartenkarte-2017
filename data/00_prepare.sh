@@ -19,7 +19,7 @@ fi
 echo "Project: $a"
 echo "Run: $b"
 
-hash csv2geojson 2>/dev/null || { echo >&2 "csv2geojson not installed, check your Node.js/NVM setup.  Aborting." ; exit 1; }
+if [ ! -d ../node_modules ]; then { printf >&2 'ERROR: node_modules not present.\n\nTry running npm install.\n\nAborting.' ; exit 1; } fi
 
 source 99_template_session
 export ext=csv
@@ -31,3 +31,4 @@ source 99_template_ext
 ./replace_types.js $out $out-tags
 
 ./04_bundle.sh
+
