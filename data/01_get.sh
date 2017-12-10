@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-wget -O $i https://framacalc.org/gartenkarte2017.1.csv
+wget -O $i https://calc.allmende.io/gartenkarte2017.3.csv
