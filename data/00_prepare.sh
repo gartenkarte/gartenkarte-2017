@@ -26,7 +26,6 @@ export ext=csv
 source 99_template_ext
 
 ./01_get.sh $i
-./02_clean.sh
 ./03_convert.sh
 ./replace_types.js $out $out-tags
 
