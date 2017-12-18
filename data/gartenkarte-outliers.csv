@@ -1,1 +1,1 @@
-name,address,comment,contact,"intern comment",status,lat,lon,types,url,,id,id_Zeile
+name,address,postcode,city,hint,ID_Map,bezirk,bezirk_id,lfdnr,label_placement,diff,comment,contact,"intern comment",status,lat,lon,types,url,,id
