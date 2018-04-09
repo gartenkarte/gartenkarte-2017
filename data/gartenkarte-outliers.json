@@ -111,7 +111,7 @@
     "message": "A row contained an invalid value for latitude or longitude",
     "row": {
       "name": "CampusGarten ",
-      "address": "Straße des 17. Juni 135 ",
+      "address": "Straße des 17. Juni 135",
       "postcode": "10623",
       "city": "Berlin",
       "hint": "beim Fachgebiet Landschaftsarchietektur /Freiraumplanung",
